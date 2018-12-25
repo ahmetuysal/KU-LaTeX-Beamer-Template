@@ -1,0 +1,146 @@
+% created by Uwe Schadewald
+% modified by Mathias Kuntze and Ahmet Uysal
+\documentclass[presentation, 8pt, mathserif, t]{beamer}
+
+\usepackage[english]{babel}
+\usepackage{pgf,graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{palatino}
+\usepackage{multimedia}
+\usepackage{pgfpages} 
+\usepackage{tikz}
+\usepackage[suffix=]{epstopdf}
+
+\usepackage{caption}
+\usepackage{subcaption}
+% if else
+\usepackage{ifthen}
+% extend table options
+\usepackage{tabularx} 
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{eso-pic}  % package to set background image
+\usepackage[calc]{picture}
+
+% Packages and stuff for ToDo list like itempoints
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\open}{$\square$}
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+
+% side bar and footer
+
+\setbeamertemplate{headline}{	
+	\leavevmode
+	\vspace{-4em}	
+	\hbox{		
+		\begin{beamercolorbox}[wd=0.85\paperwidth,ht=10ex,dp=8ex,center]{}%			
+			% navigation with subsections as dots
+			\hspace{3.5em}\insertnavigation{0.7\paperwidth}{\hskip0pt plus1fill} % add navigation in footer						
+			% navigation with sections, no subsections
+			% \insertsectionnavigationhorizontal{0.6\paperwidth}{\hskip0pt plus1fill}{} \\ % add navigation in footer}
+			
+		\end{beamercolorbox} 				
+	}
+	\vskip0pt
+}
+
+
+\setbeamertemplate{footline}{	
+	\leavevmode
+	\vspace{-3em}
+	\hbox{
+		\begin{beamercolorbox}[wd=.33\paperwidth,ht=2.25ex,dp=1ex,left]{author in head/foot}%
+			\hspace{5em}
+			\insertshortauthor
+		\end{beamercolorbox}
+		\begin{beamercolorbox}[wd=.33\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+			\insertshorttitle - \insertshortsubtitle
+		\end{beamercolorbox}	
+		\begin{beamercolorbox}[wd=0.30\paperwidth,ht=10ex,dp=8ex,right]{pagenumber in head/foot}			 	
+			\insertframenumber % add page numbers
+		\end{beamercolorbox}
+	}			
+	\vskip0pt
+}
+
+
+
+\setbeamertemplate{frametitle}{
+	\ifthenelse{\equal{\insertframesubtitle}{}}{
+		\vspace{0.6cm}
+		\huge{\insertframetitle}
+	}{
+		\vspace{0.6cm}
+		\small{\insertframetitle}\\
+		\vspace{0.3cm}
+		\huge{\insertframesubtitle}
+    }		
+}
+
+	
+% enumerate sections
+\setbeamertemplate{section in head/foot}{\hfill\insertsectionheadnumber.~\insertsectionhead}
+%\setbeamertemplate{section in head/foot shaded}{\color{structure!50}\hfill\insertsectionheadnumber.~\insertsectionhead}
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+
+%enumerate subsections
+\setbeamertemplate{subsection in head/foot}{\hfill\insertsubsectionheadnumber.~\insertsubsectionhead}
+\setbeamertemplate{subsection in head/foot shaded}{\color{structure!50}\hfill\insertsubsectionheadnumber.~\insertsubsectionhead}
+%\setbeamertemplate{subsection in toc}[subsections numbered]
+\setbeamertemplate{subsection in toc}{\vskip0.5em\leftskip=3em\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+
+%--------------------------Common------------------------------------------------------
+\setbeamercovered{transparent} % make the beamer theme invisible
+\usefonttheme{structurebold}
+\beamertemplatenavigationsymbolsempty % set navigations helper function to off
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{note page}[plain]
+
+%\setlist[itemize,1]{label={$\bullet$}} % \item are using bullets
+\setbeamertemplate{itemize items}[circle]
+	
+	
+
+	
+% create a new command to show it on two screens
+% I'm using dspdfviewer.
+\newcommand{\setDualView} {
+	\setbeameroption{show notes on second screen=right}
+}
+
+%\AtBeginSection[]{\subsection{}}
+\newcommand{\addcite}[1]{%
+	\AddToShipoutPictureFG*{%
+		\AtPageLowerLeft{%
+			\put(0.90\paperwidth,5em){											
+				\tiny{
+					\cite{#1} 
+				}			
+			}
+		}
+	}	
+}
+
+% insert a frame with references -> use bibtex
+\newcommand{\insertReferenceFrame}[3]{%
+	\section{#1}
+	\begin{frame}[allowframebreaks]
+		\frametitle{#1}
+		\bibliographystyle{#2}
+		\bibliography{#3}
+	\end{frame}	
+}
+
+
+\AtBeginSection[]{\subsection{}}
+	
+
+
+
+

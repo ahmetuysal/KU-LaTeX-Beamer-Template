@@ -1,0 +1,66 @@
+\input{style/template.tex}
+\usepackage{style/koc}
+
+%\documentclass{beamer}
+%\usetheme{ilmenau}
+\title{Title}
+\subtitle{Subtitle}
+\date{\today}
+\author{Author}
+\institute{College of Engineering}
+
+\titlegraphic{\includegraphics[scale=0.1]{style/images/logo_koc.eps}}
+
+
+
+
+\begin{document}
+  \maketitle
+
+\frame{\frametitle{Contents}\tableofcontents}
+
+  \section{First Section}
+  \begin{frame}{First Frame}
+    Hello, world!
+  \end{frame}
+  \begin{frame}{First Frame}
+    \vskip5mm
+ \begin{columns}
+    \column{6cm}
+ 	  \includegraphics[width=6.0cm]{style/images/background}
+     \column{5cm}
+      \vspace{-4cm}
+	\begin{itemize}
+		 \itemsep1.2em
+      	 \item Bulletpoint
+      	 \item Bulletpoint
+       	 \item Bulletpoint
+     	 \item Bulletpoint
+     \end{itemize}
+ \end{columns}
+  \end{frame}
+
+
+ \section{Second Section}
+  \begin{frame}{First Frame}
+    \frametitle{Optional Frame Title} % Default is frame name
+	\vskip5mm
+	\vspace{-0.4cm} % for vertical positioning
+	\begin{itemize}
+		\itemsep1.2em
+		\item Bulletpoint
+		\item To do list:
+		\begin{itemize}
+			\itemsep1.2em
+			\item[\done] Done\cite{4351913}
+			\item[\wontfix] Wontfix
+			\item[\open] Open
+		\end{itemize}
+	\end{itemize}
+  \end{frame}
+
+%arg1: frame title / arg2: bibstyle / arg3: bibtex file
+\insertReferenceFrame{References}{IEEEbib}{references}
+
+
+\end{document}
